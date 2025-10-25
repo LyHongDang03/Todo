@@ -57,6 +57,18 @@ khác nhau
 ## DELETE method
 - Dùng để xóa dữ liệu
 - Sử dụng Model.findByIdAndDelete(id) giống với các method còn lại nhưng delete là xóa bản ghi trong db theo id với _id trong db
+## Bất đồng bộ
+- Không cần phải chờ thực hiện xong mới thực hiện tiếp mà sẽ thực hiện liên tục
++ Ví dụ ta có log in ra kết quả 1, 2, 3, funtion(){log ra 4 thực hiện sau 4s} thì kết quả in ra sẽ là 1 2 3 5 và sau 4s sẽ in ra 4 => Chương trình không cần chờ 4s để in ra 4 mà in ra 5 luôn sau đó mới in ra 4
+## Promise
+- Promise cũng giống như lời hứa trong thực tế có 3 trạng thái: chưa được giải quyết (unresolved), đã giải quyết (resolved), hoặc bị từ chối (rejected).
++ Unresolved or Pending - Promise đang chờ xử lý nếu kết quả chưa sẵn sàng. Khi đó, nó đang chờ một thứ gì đó kết thúc
++ Resolved or Fulfilled - Promise được giải quyết nếu có kết quả. Đó là một cái gì đó đã hoàn thành và tất cả đều diễn ra tốt đẹp
++ Rejected - Promise bị từ chối nếu xảy ra lỗi
+- Khi resolved thì dùng Promise.then() để thực hiện công việc tiếp khi bị reject thì sẽ vào .catch(err) và lắng ra lỗi
+## async/await
+- async: Khai báo đầu hàm cho biết hàm này là hàm bất đồng bộ
+- await: Chờ đến khi công việc cần thiết thực hiện xong thì sẽ thực hiện tiếp công việc đã await ví dụ khi thực hiện find() nếu không có await thì res sẽ lấy luôn dữ liệu là Object{<pending>} bởi lúc này db chưa query xong, nếu thực hiện await thì khi find() sẽ chờ đến khi db query xong thì mới thực hiện tiếp công việc tiếp theo
  ### DOCS
  - https://mongoosejs.com/docs/queries.html
  
